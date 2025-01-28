@@ -3,14 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog</title>
+    <title>Nanoqian Blog</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f9f9f9;
             color: #333;
+        }
+
+        /* Title Font - Kaiti */
+        h1 {
+            font-family: 'Kaiti', 'KaiTi', 'SimKai', sans-serif;
+            text-align: center;
+            margin-bottom: 10px;
         }
 
         .container {
@@ -22,61 +29,147 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        h1 {
+        /* Totals Bar (Filter Buttons) */
+        .totals-bar {
+            padding: 8px 0;
+            font-size: 0.9em;
             text-align: center;
             margin-bottom: 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-around;
+            background: #f0f0f0;
+            color: #333;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        .totals-bar div {
+            cursor: pointer;
+            padding: 8px 16px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            user-select: none;
+            transition: background-color 0.3s ease;
+            font-size: 1em;
         }
 
-        th, td {
+        .totals-bar .notes-btn.active {
+            background-color: #f4d03f; /* Soft gold (Analogous) */
+        }
+
+        .totals-bar .projects-btn.active {
+            background-color: #3498db; /* Soft blue (Complementary) */
+        }
+
+        .totals-bar .research-btn.active {
+            background-color: #2ecc71; /* Soft green (Analogous) */
+        }
+
+        .totals-bar div:hover {
+            background-color: #c0c0c0; /* Lighter gray on hover */
+        }
+
+        /* Content Row */
+        .content-row {
+            display: flex;
+            align-items: center;
             padding: 12px;
+            margin-bottom: 15px;
+            background-color: #f3f3f3; /* Lighter background */
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            justify-content: space-between;
+        }
+
+        .content-row:hover {
+            background-color: rgba(255, 255, 255, 0.8); /* Slightly more contrast */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-row .date, 
+        .content-row .topic, 
+        .content-row .title,
+        .content-row .image {
+            padding: 10px;
+        }
+
+        .content-row .date {
+            flex: 1;
             text-align: left;
-            border-bottom: 1px solid #ddd;
         }
 
-        th {
-            background-color: #f4f4f4;
+        /* Title and Image - Adjusted Flex Order */
+        .content-row .title {
+            flex: 2;
+            text-align: left;
         }
 
-        tr:hover {
-            background-color: #f1f1f1;
+        /* Image section between Title and Topic */
+        .content-row .image {
+            width: 80px; /* Fixed width for images */
+            height: 80px; /* Fixed height for images */
+            text-align: center;
+            overflow: hidden; /* Prevent overflow if image is too large */
+            display: block; /* Make sure it's a block element */
         }
 
-        a {
-            color: #007BFF;
+        .content-row .topic {
+            flex: 1;
+            text-align: center;
+        }
+
+        /* Highlight colors with higher contrast */
+        .highlight-notes {
+            background-color: #f9e9a7; /* High contrast light yellow */
+        }
+
+        .highlight-project {
+            background-color: #a8c8e3; /* High contrast light blue */
+        }
+
+        .highlight-research {
+            background-color: #b1e5b8; /* High contrast light green */
+        }
+
+        .content-row a {
+            color: inherit;
             text-decoration: none;
         }
 
-        a:hover {
+        .content-row a:hover {
             text-decoration: underline;
         }
 
+        /* Image Styling */
+        .content-row img {
+            width: 100%; /* Ensure the image fits within the fixed size */
+            height: 100%;
+            object-fit: cover; /* Ensure the image covers the entire area */
+            border-radius: 5px;
+            filter: grayscale(50%); /* Apply 50% grayscale */
+            transition: filter 0.3s ease; /* Smooth transition for grayscale effect */
+        }
+
+        .content-row img:hover {
+            filter: grayscale(0%); /* Remove grayscale on hover for visibility */
+        }
+
         @media screen and (max-width: 600px) {
-            table, thead, tbody, th, td, tr {
-                display: block;
+            .content-row {
+                flex-direction: column;
+                text-align: center;
             }
 
-            th {
-                display: none;
+            .content-row .date,
+            .content-row .topic,
+            .content-row .title,
+            .content-row .image {
+                text-align: center;
             }
 
-            td {
-                position: relative;
-                padding-left: 50%;
-            }
-
-            td:before {
-                content: attr(data-label);
-                position: absolute;
-                left: 0;
-                width: 50%;
-                padding-left: 10px;
-                font-weight: bold;
-                white-space: nowrap;
+            .content-row .image {
+                margin: 10px 0;
             }
         }
     </style>
@@ -84,22 +177,48 @@
 <body>
     <div class="container">
         <h1>Nanoqian</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Topic</th>
-                    <th>Title</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td data-label="Date">2025-01-015</td>
-                    <td data-label="Topic">Notes</td>
-                    <td data-label="Title"><a href="https://example.com" target="_blank">Test</a></td>
-                </tr>
-            </tbody>
-        </table>
+
+        <!-- Totals Bar (Filter Buttons) -->
+        <div class="totals-bar">
+            <div class="notes-btn active">Notes</div>
+            <div class="projects-btn active">Projects</div>
+            <div class="research-btn active">Research</div>
+        </div>
+
+        <!-- Content Rows -->
+        <div class="content-row highlight-notes" onclick="window.location.href='./p/2025-01-27/en.html'">
+            <div class="date">2025-01-27</div>
+            <div class="title">Stuff</div>
+            <div class="image">
+                <img src="./p/2025-01-27/thumbnail.png" alt="thumbnail">
+            </div>
+            <div class="topic">Notes</div>
+        </div>
     </div>
+
+    <script>
+        // Toggle active class on filter buttons
+        document.querySelectorAll('.totals-bar div').forEach(button => {
+            button.addEventListener('click', () => {
+                button.classList.toggle('active');
+                filterContent();
+            });
+        });
+
+        // Function to filter content based on active buttons
+        function filterContent() {
+            const activeButtons = document.querySelectorAll('.totals-bar .active');
+            const rows = document.querySelectorAll('.content-row');
+
+            rows.forEach(row => {
+                const topic = row.querySelector('.topic').textContent.trim().toLowerCase();
+                const showRow = Array.from(activeButtons).some(button => button.textContent.trim().toLowerCase() === topic);
+                row.style.display = showRow ? '' : 'none';
+            });
+        }
+
+        // Initial content state, show all rows
+        filterContent();
+    </script>
 </body>
 </html>
