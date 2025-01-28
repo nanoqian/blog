@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post Title Here</title>
+
+    <!-- MathJax CDN to enable LaTeX rendering -->
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+
+    <style>
+        /* Global Body and Container Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        /* Top Links: Home and Language Switcher */
+        .top-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 20px;
+            background-color: #f0f0f0;
+            font-size: 1.1em;
+            text-align: center;
+        }
+
+        .top-links a {
+            color: #007BFF;
+            text-decoration: none;
+            margin: 5px 0;
+        }
+
+        .top-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Content Area */
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Title Styles (Matching Blog Post Styling) */
+        h1 {
+            font-family: 'KaiTi', 'SimKai', 'Arial', sans-serif;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* Post Metadata (Date, Author) */
+        .post-meta {
+            font-size: 0.9em;
+            color: #777;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Post Content */
+        .post-content {
+            line-height: 1.6;
+            font-size: 1.1em;
+        }
+
+        .post-content h2 {
+            font-size: 1.5em;
+            color: #444;
+            margin-top: 30px;
+        }
+
+        /* Styling for Links */
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsiveness */
+        @media screen and (max-width: 600px) {
+            .top-links a {
+                font-size: 1em;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .post-meta {
+                font-size: 0.8em;
+            }
+
+            .post-content h2 {
+                font-size: 1.3em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Links: Home and Language Switcher -->
+    <div class="top-links">
+        <div class="home-link">
+            <a href="/blog/">Home</a>
+        </div>
+        <div class="language-switcher">
+            <a href="en.html">English</a> | <a href="zh.html">中文（臺灣）</a>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="container">
+        <!-- Blog Post Title -->
+        <h1>東西</h1>
+
+        <!-- Post Metadata (Date, Author) -->
+        <div class="post-meta">
+            <p><strong>Posted on:</strong> 2025-01-28 | <strong>Author: </strong> nanoqian</p>
+        </div>
+
+        <!-- Post Content -->
+        <div class="post-content">
+            
+        </div>
+    </div>
+
+    <script>
+        // Automatically set the title to match the post title in <h1>
+        document.title = document.querySelector("h1").textContent;
+    </script>
+</body>
+</html>
